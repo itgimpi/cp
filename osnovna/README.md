@@ -1,2 +1,2 @@
-# srednja škola
+# osnovna škola
  competitive programming
