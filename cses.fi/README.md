@@ -1,0 +1,2 @@
+# cses.fi
+ competitive programming
