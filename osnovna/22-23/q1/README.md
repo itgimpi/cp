@@ -1,7 +1,7 @@
 # osnovna škola
  2022/23 kvalifikacije 1
 
- 01 Квиз https://arena.petlja.org/competition/os6-202223-kvalifikacije1n#tab_134847
+ 01 Квиз https://arena.petlja.org/competition/os6-202223-kvalifikacije1n#tab_134847 <br>
  02 Гориво https://arena.petlja.org/competition/os6-202223-kvalifikacije1n#tab_134843
  03 Какуро провера https://arena.petlja.org/competition/os6-202223-kvalifikacije1n#tab_134844
  04 Списак производа https://arena.petlja.org/competition/os6-202223-kvalifikacije1n#tab_134845
@@ -17,4 +17,3 @@
  14 Датум са највећом зарадом https://arena.petlja.org/competition/os8-202223-kvalifikacije1n#tab_134860
  15 Збирови након поделе https://arena.petlja.org/competition/os8-202223-kvalifikacije1n#tab_134863
 
- 
