@@ -1,0 +1,2 @@
+# srednja škola
+ competitive programming
