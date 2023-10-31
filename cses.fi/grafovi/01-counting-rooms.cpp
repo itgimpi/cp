@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// https://cses.fi/problemset/task/1192
+
 /* test primer dat u zadatku
 unos:
 5 8
@@ -17,14 +19,16 @@ void BFS(vector<vector<char>>* sobe, int i, int j, int n, int m) {
     vector<pair<int, int>> frontier; // pair<int, int> se ovde koristi za pamcenje polja
     pair<int, int> temp_polje; // s obzirom da se mora iz frontiera izvaditi poslednji elemenat,
     // moramo ga cuvati u ovoj pomocnoj promenljivi
-    frontier.push_back(make_pair(i, j));
+    frontier.push_back(make_pair(i, j)); // BFS funkcionise na osnovu "frontiera", prstena koji se siri tokom prolaza kroz matricu
+    // kada ne bismo menjali elemente u matrici, bio bi nam potreban i vektor posecenih polja, ali nam sada to nije potrebno
     sobe->at(i).at(j) = '#';
     // .at() je vektorska funkcija koja ce biti koriscena u ovom resenju zbog toga sto je
     // bolje koristiti umesto [] sa vektorima, iako isti cilj postizu
     while(!frontier.empty()) { 
-        // ako moram ovde objasniti BFS, moze profesor ostaviti komentar ili se moze neko pozaliti
+        // najranije ubaceno polje u frontier se izbaci
         temp_polje = frontier.at(frontier.size() - 1);
         frontier.pop_back();
+        // i gleda se da li je neko od susednih polja prazno, ako jeste ubacuje se u frontier
         if(temp_polje.first != 0) { // da ne bi doslo do sobe->at(-1), sto izaziva segfault
             if(sobe->at(temp_polje.first - 1).at(temp_polje.second) == '.') {
                 frontier.push_back(make_pair(temp_polje.first - 1, temp_polje.second));
