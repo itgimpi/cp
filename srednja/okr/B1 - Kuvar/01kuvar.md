@@ -103,26 +103,23 @@ int main(){
     for (int i=0; i<n; i++)
         cin >> z[i];
 
-    int r=0;
-    for (int i=0; i<n; i++) {
-        for (int j=0; j<n; j++){
-            if (x[i] == y[j]){
-                for (int k=0; k<n;k++){
-                    if (z[k] == j+1) r++;
-                }
-            }
-        }
-    }
-    cout << r;
+    int res=0;
+    for (int i=0; i<n; i++) 
+        for (int j=0; j<n; j++)
+            if (x[i] == y[j])
+                for (int k=0; k<n;k++)
+                    if (z[k] == j+1) res++;
+
+    cout << res;
 
     return 0;}
 ```
 
 ## mape
 
-#include <bits/stdc++.h>
 int
 ``` cpp title="01_kuvar.cpp" linenums="1"
+#include <bits/stdc++.h>
 using namespace std;
 int main()
 {
