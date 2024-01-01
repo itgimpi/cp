@@ -3,7 +3,7 @@
 	| Vremensko ograničenje | Memorijsko ograničenje |
 	| 1000ms                | 64MB |
 	
-	Poznati TV kuvar Epirka planira sledeću sezonu svoje emisije, u kojoj će snimiti **N** emisija o jelima $X~1~, X_2, \dots, X_N$ (ne neophodno različitim -- moguće je da snima više emisija o istom jelu). Radi jednostavnosti, predstavićemo ova jela brojevima (isto od $1$ do **N**): ako je $X_i = x$, $i$-ta emisija će biti o jelu **x**.
+	Poznati TV kuvar Epirka planira sledeću sezonu svoje emisije, u kojoj će snimiti **N** emisija o jelima X~1~, X~2~, \dots, X_N$ (ne neophodno različitim -- moguće je da snima više emisija o istom jelu). Radi jednostavnosti, predstavićemo ova jela brojevima (isto od $1$ do **N**): ako je $X_i = x$, $i$-ta emisija će biti o jelu **x**.
 	
 	Na raspolaganju mu je **N** recepata $Y_1, Y_2, \dots, Y_N$, isto predstavljeni brojevima. Pošto emisija mora biti zanimljiva, nisu dovoljni recepti, već i scenario: smislio je (isto) **N** scenarija $Z_1, Z_2, \dots, Z_K$, gde $Z_i = z$ znači da se $i$-ti scenario može koristiti za emisiju u kojoj će praviti jelo $Y_{z}$.
 	
