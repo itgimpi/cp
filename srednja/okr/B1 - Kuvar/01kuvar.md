@@ -1,7 +1,7 @@
 # B1 - Kuvar
 
-	| Vremensko ograničenje | Memorijsko ograničenje |
-	| 1000ms                | 64MB                   |
+| Vremensko ograničenje | Memorijsko ograničenje |
+| 1000ms                | 64MB                   |
 	
 Poznati TV kuvar Epirka planira sledeću sezonu svoje emisije, u kojoj će snimiti $N$ emisija o jelima $X_1, X_2, \dots, X_N$ (ne neophodno različitim -- moguće je da snima više emisija o istom jelu). Radi jednostavnosti, predstavićemo ova jela brojevima (isto od $1$ do $N$): ako je $X_i = x$, $i$-ta emisija će biti o jelu $x$.
 
@@ -53,13 +53,13 @@ Na standardni izlaz je potrebno ispisati jedan ceo broj: broj načina na koje je
 
 ## Primer 1
 
-4 // N = 4, 4 emisije, 4 recepta i 4 scenarija
+4       <- N = 4, 4 emisije, 4 recepta i 4 scenarija
 1 2 3 4 <- redni brojevi
-slede emisije:
+slede emisije po jelu:
 1 1 4 3 <- emisija 1 je o jelu 1, i druga, treća o jelu 4, četvrta o jelu 3
-onda jela:
+onda jela po receptu:
 3 1 3 4 <- jelo 3 se pravi po receptu 1, jelo 1 po receptu 2, jelo 3 po 3, jelo 4 po 4
-na kraju recepti:
+na kraju recepti po scenariju:
 1 3 2 2 <- recept 1 je po scenariju 1, recept 3 po scenariju 2, 2 je po 3 i 2 je po 4 
 
 
@@ -88,6 +88,117 @@ Test primeri su podeljeni u pet disjunktnih grupa:
 	
 ## Rešenje za 40 poena
 
+``` cpp title="01_kuvar.cpp" linenums="1"
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n; cin >> n;
+    int x[n], y[n], z[n];
+    for (int i=0; i<n; i++)
+        cin >> x[i];
+
+    for (int i=0; i<n; i++)
+        cin >> y[i];
+
+    for (int i=0; i<n; i++)
+        cin >> z[i];
+
+    int r=0;
+    for (int i=0; i<n; i++) {
+        for (int j=0; j<n; j++){
+            if (x[i] == y[j]){
+                for (int k=0; k<n;k++){
+                    if (z[k] == j+1) r++;
+                }
+            }
+        }
+    }
+    cout << r;
+
+    return 0;}
+```
+
+## mape
+
+#include <bits/stdc++.h>
+int
+``` cpp title="01_kuvar.cpp" linenums="1"
+using namespace std;
+int main()
+{
+    ios_base::sync_with_stdio(false);
+
+    int n, tmp1, res = 0;
+    vector<int> X; 
+    vector<int> Y;
+    map<int, int> mY;
+    map<int, int> mZ;
+
+    cin >> n;
+    X.resize(n);
+    Y.resize(n);
+    for(int i = 0; i < n; i++) {
+        cin >> X.at(i);
+    }
+    for(int i = 0; i < n; i++) {
+        cin >> tmp1;
+        Y.at(i) = tmp1;
+        mY[tmp1];
+        mY[tmp1]++;
+    }
+    for(int i = 0; i < n; i++) {
+        cin >> tmp1;
+        mZ[Y.at(tmp1 - 1)];
+        mZ[Y.at(tmp1 - 1)]++;
+    }
+    
+    for(int i = 0; i < n; i++) {
+        res += mZ[X.at(i)];
+    }
+    cout << res << endl;
+    return 0;
+}
+```
+ull
+``` cpp title="01_kuvar.cpp" linenums="1"
+sing namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+
+    unsigned long long n, tmp1, res = 0;
+    vector<unsigned long long> X; 
+    vector<unsigned long long> Y;
+    map<unsigned long long, unsigned long long> mY;
+    map<unsigned long long, unsigned long long> mZ;
+
+    cin >> n;
+    X.resize(n);
+    Y.resize(n);
+    for(unsigned long long i = 0; i < n; i++) {
+        cin >> X.at(i);
+    }
+    for(unsigned long long i = 0; i < n; i++) {
+        cin >> tmp1;
+        Y.at(i) = tmp1;
+        mY[tmp1];
+        mY[tmp1]++;
+    }
+    for(unsigned long long i = 0; i < n; i++) {
+        cin >> tmp1;
+        mZ[Y.at(tmp1 - 1)];
+        mZ[Y.at(tmp1 - 1)]++;
+    }
+    
+    for(unsigned long long i = 0; i < n; i++) {
+        res += mZ[X.at(i)];
+    }
+    cout << res << endl;
+    return 0;
+}
+```
 	
 ## Glavno rešenje
 Prva dva podzadatka možemo jednostavno rešiti sa dve ugnježdene petlje koje isprobavaju svaki par $(i, j)$ i broje za koliko takvih parova je $X_i = Z_{Y_j}$. Vremenska složenost ovog algoritma je $\mathcal{O}(N^2)$, što neće biti dovoljno za preostale podzadatke.
