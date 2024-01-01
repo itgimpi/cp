@@ -53,13 +53,13 @@ Na standardni izlaz je potrebno ispisati jedan ceo broj: broj načina na koje je
 ## Primer 1
 
 4       <- N = 4, 4 emisije, 4 recepta i 4 scenarija<br>
-1 2 3 4 <- redni brojevi
-slede emisije po jelu:
-1 1 4 3 <- emisija 1 je o jelu 1, i druga, treća o jelu 4, četvrta o jelu 3
-onda jela po receptu:
-3 1 3 4 <- jelo 3 se pravi po receptu 1, jelo 1 po receptu 2, jelo 3 po 3, jelo 4 po 4
-na kraju recepti po scenariju:
-1 3 2 2 <- recept 1 je po scenariju 1, recept 3 po scenariju 2, 2 je po 3 i 2 je po 4 
+1 2 3 4 <- redni brojevi<br>
+slede emisije po jelu:<br>
+1 1 4 3 <- emisija 1 je o jelu 1, i druga, treća o jelu 4, četvrta o jelu 3<br>
+onda jela po receptu:<br>
+3 1 3 4 <- jelo 3 se pravi po receptu 1, jelo 1 po receptu 2, jelo 3 po 3, jelo 4 po 4<br>
+na kraju recepti po scenariju:<br>
+1 3 2 2 <- recept 1 je po scenariju 1, recept 3 po scenariju 2, 2 je po 3 i 2 je po 4<br>
 
 
 Ako se u prvom primeru odluči za prvu epizodu, praviće jelo $1$, koje se pravi samo po drugom receptu. Za taj recept postoje dva moguća scenarija: treći i četvrti.
