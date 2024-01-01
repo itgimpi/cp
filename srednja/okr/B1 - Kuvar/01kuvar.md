@@ -1,4 +1,4 @@
-# B1 - Kuvar
+	# B1 - Kuvar
 
 	| Vremensko ograničenje | Memorijsko ograničenje |
 	| 1000ms                | 64MB                   |
