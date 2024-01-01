@@ -3,11 +3,11 @@
 	| Vremensko ograničenje | Memorijsko ograničenje |
 	| 1000ms                | 64MB                   |
 	
-Poznati TV kuvar Epirka planira sledeću sezonu svoje emisije, u kojoj će snimiti <strong>N</strong> emisija o jelima X~1~, X~2~, \dots, X_N$ (ne neophodno različitim -- moguće je da snima više emisija o istom jelu). Radi jednostavnosti, predstavićemo ova jela brojevima (isto od $1$ do **N**): ako je $X_i = x$, $i$-ta emisija će biti o jelu **x**.
+Poznati TV kuvar Epirka planira sledeću sezonu svoje emisije, u kojoj će snimiti <strong>N</strong> emisija o jelima **X~1~, X~2~, ..., X~N~** (ne neophodno različitim -- moguće je da snima više emisija o istom jelu). Radi jednostavnosti, predstavićemo ova jela brojevima (isto od **1** do **N**): ako je **X~i~ = x**, **i**-ta emisija će biti o jelu **x**.
 	
-Na raspolaganju mu je **N** recepata $Y_1, Y_2, \dots, Y_N$, isto predstavljeni brojevima. Pošto emisija mora biti zanimljiva, nisu dovoljni recepti, već i scenario: smislio je (isto) **N** scenarija $Z_1, Z_2, \dots, Z_K$, gde $Z_i = z$ znači da se $i$-ti scenario može koristiti za emisiju u kojoj će praviti jelo $Y_{z}$.
+Na raspolaganju mu je **N** recepata **Y~1~, Y~2~, \dots, Y~N~**, isto predstavljeni brojevima. Pošto emisija mora biti zanimljiva, nisu dovoljni recepti, već i scenario: smislio je (isto) **N** scenarija **Z~1~, Z~2~, \dots, Z~K~**, gde **Z~i~ = z** znači da se **i**-ti scenario može koristiti za emisiju u kojoj će praviti jelo **Y~{z}~**.
 	
-Nakon što je popisao emisije, jela i recepte, interesuje ga na koliko načina može da počne snimanje, odnosno na koliko načina može da izabere emisiju **i** i scenario **j** o receptu za odgovarajuće jelo. Drugim rečima, interesuje ga broj uređenih parova **(i, j)**, za koje važi $X_i = Y_{Z_j}$.
+Nakon što je popisao emisije, jela i recepte, interesuje ga na koliko načina može da počne snimanje, odnosno na koliko načina može da izabere emisiju **i** i scenario **j** o receptu za odgovarajuće jelo. Drugim rečima, interesuje ga broj uređenih parova **(i, j)**, za koje važi **X~i~ = Y~{Z~j}~**.
 	
 ## Opis ulaza
 Prvi red standardnog ulaza sadrži jedan prirodan broj $N$: broj emisija, recepata i scenarija.
