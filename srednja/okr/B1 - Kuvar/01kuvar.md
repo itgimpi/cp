@@ -1,7 +1,6 @@
 # B1 - Kuvar
 
-| Vremensko ograničenje | Memorijsko ograničenje |
-| 1000ms                | 64MB                   |
+| Vremensko ograničenje 1000ms | Memorijsko ograničenje 64MB |
 	
 Poznati TV kuvar Epirka planira sledeću sezonu svoje emisije, u kojoj će snimiti $N$ emisija o jelima $X_1, X_2, \dots, X_N$ (ne neophodno različitim -- moguće je da snima više emisija o istom jelu). Radi jednostavnosti, predstavićemo ova jela brojevima (isto od $1$ do $N$): ako je $X_i = x$, $i$-ta emisija će biti o jelu $x$.
 
@@ -53,7 +52,7 @@ Na standardni izlaz je potrebno ispisati jedan ceo broj: broj načina na koje je
 
 ## Primer 1
 
-4       <- N = 4, 4 emisije, 4 recepta i 4 scenarija
+4       <- N = 4, 4 emisije, 4 recepta i 4 scenarija<br>
 1 2 3 4 <- redni brojevi
 slede emisije po jelu:
 1 1 4 3 <- emisija 1 je o jelu 1, i druga, treća o jelu 4, četvrta o jelu 3
