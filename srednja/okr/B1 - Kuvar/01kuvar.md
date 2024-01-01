@@ -50,15 +50,28 @@ Na standardni izlaz je potrebno ispisati jedan ceo broj: broj načina na koje je
 ```
 	
 ## Objašnjenje primera
+
+## Primer 1
+
+4 // N = 4, 4 emisije, 4 recepta i 4 scenarija
+1 2 3 4 <- redni brojevi
+slede emisije:
+1 1 4 3 <- emisija 1 je o jelu 1, i druga, treća o jelu 4, četvrta o jelu 3
+onda jela:
+3 1 3 4 <- jelo 3 se pravi po receptu 1, jelo 1 po receptu 2, jelo 3 po 3, jelo 4 po 4
+na kraju recepti:
+1 3 2 2 <- recept 1 je po scenariju 1, recept 3 po scenariju 2, 2 je po 3 i 2 je po 4 
+
+
 Ako se u prvom primeru odluči za prvu epizodu, praviće jelo $1$, koje se pravi samo po drugom receptu. Za taj recept postoje dva moguća scenarija: treći i četvrti.
-	
+
 Slično, drugoj epizodi odgovaraju treći i četvrti scenario.
-	
-Treća epizoda je o jelu **4**, za koje nema na raspolaganju nijedan scenario.
-	
-Četvrta epizoda je o jelu **3**, koje se pravi po prvom i trećem receptu. Za prvi recept ima spreman scenario $1$, a za drugi scenario $2$, tako da i za ovu epizodu ima na raspolaganju dva scenarija.
-	
-Dakle, ukupno ima **2 + 2 + 0 + 2 = 6** opcija.
+
+Treća epizoda je o jelu $4$, za koje nema na raspolaganju nijedan scenario.
+
+Četvrta epizoda je o jelu $3$, koje se pravi po prvom i trećem receptu. Za prvi recept ima spreman scenario $1$, a za drugi scenario $2$, tako da i za ovu epizodu ima na raspolaganju dva scenarija.
+
+Dakle, ukupno ima $2 + 2 + 0 + 2 = 6$ opcija.
 	
 ## Ograničenja
 	
@@ -73,8 +86,8 @@ Test primeri su podeljeni u pet disjunktnih grupa:
 - U testovima vrednim 20 poena: $Z_i = i$ za sve $1 \leq i \leq N$.
 - U testovima vrednim 30 poena: nema dodatnih ograničenja.
 	
-=== "Rešenje"
-	
+## Rešenje za 40 poena
+
 	
 ## Glavno rešenje
 Prva dva podzadatka možemo jednostavno rešiti sa dve ugnježdene petlje koje isprobavaju svaki par $(i, j)$ i broje za koliko takvih parova je $X_i = Z_{Y_j}$. Vremenska složenost ovog algoritma je $\mathcal{O}(N^2)$, što neće biti dovoljno za preostale podzadatke.
