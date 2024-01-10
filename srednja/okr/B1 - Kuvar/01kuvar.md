@@ -1,6 +1,6 @@
 # B1 - Kuvar
 
-| Vremensko ograničenje 1000ms | Memorijsko ograničenje 64MB |
+	| Vremensko ograničenje 1000ms | Memorijsko ograničenje 64MB |
 	
 Poznati TV kuvar Epirka planira sledeću sezonu svoje emisije, u kojoj će snimiti $N$ emisija o jelima $X_1, X_2, \dots, X_N$ (ne neophodno različitim -- moguće je da snima više emisija o istom jelu). Radi jednostavnosti, predstavićemo ova jela brojevima (isto od $1$ do $N$): ako je $X_i = x$, $i$-ta emisija će biti o jelu $x$.
 
@@ -61,8 +61,19 @@ onda jela po receptu:<br>
 na kraju recepti po scenariju:<br>
 1 3 2 2 <- recept 1 je po scenariju 1, recept 3 po scenariju 2, 2 je po 3 i 2 je po 4<br>
 
+emisije     jela
++---+       +---+      
+| 1 |  ->   | 1 |
++---+       +---+
+| 2 |       | 2 |
++---+       +---+
+| 3 |       | 3 |
++---+       +---+
+| 4 |       | 4 |
++---+       +---+
 
-Ako se u prvom primeru odluči za prvu epizodu, praviće jelo $1$, koje se pravi samo po drugom receptu. Za taj recept postoje dva moguća scenarija: treći i četvrti.
+
+Ako se odluči za prvu epizodu, praviće jelo $1$, koje se pravi samo po drugom receptu. Za taj recept postoje dva moguća scenarija: treći i četvrti.
 
 Slično, drugoj epizodi odgovaraju treći i četvrti scenario.
 
@@ -134,28 +145,28 @@ int main()
     cin >> n;
     X.resize(n);
     Y.resize(n);
-    for(int i = 0; i < n; i++) {
+    for(int i = 0; i < n; i++) 
         cin >> X.at(i);
-    }
+
     for(int i = 0; i < n; i++) {
         cin >> tmp1;
         Y.at(i) = tmp1;
         mY[tmp1];
-        mY[tmp1]++;
-    }
+        mY[tmp1]++;    }
+		
     for(int i = 0; i < n; i++) {
         cin >> tmp1;
         mZ[Y.at(tmp1 - 1)];
-        mZ[Y.at(tmp1 - 1)]++;
-    }
+        mZ[Y.at(tmp1 - 1)]++;    }
     
-    for(int i = 0; i < n; i++) {
+    for(int i = 0; i < n; i++)
         res += mZ[X.at(i)];
-    }
+
     cout << res << endl;
     return 0;
 }
 ```
+
 ull
 ``` cpp title="01_kuvar.cpp" linenums="1"
 sing namespace std;
@@ -197,11 +208,11 @@ int main()
 ```
 	
 ## Glavno rešenje
-Prva dva podzadatka možemo jednostavno rešiti sa dve ugnježdene petlje koje isprobavaju svaki par $(i, j)$ i broje za koliko takvih parova je $X_i = Z_{Y_j}$. Vremenska složenost ovog algoritma je $\mathcal{O}(N^2)$, što neće biti dovoljno za preostale podzadatke.
+Prva dva podzadatka mogu lako da se reše sa dve ugnježdene petlje koje isprobavaju svaki par $(i, j)$ i broje za koliko takvih parova je $X_i = Z_{Y_j}$. Vremenska složenost ovog algoritma je $\mathcal{O}(N^2)$, što nije dovoljno za preostale podzadatke.
 	
-Algoritam možemo poboljšati tako što razdvojimo ove dve petlje: prvo ćemo prebrojati koliko postoji epizoda za svako moguće jelo, odnosno izračunati niz $C$, gde je $C_i$ broj indeksa $j$ gde $X_j = i$. Pošto su sve vrednosti $X_i$ najviše $N$, ovaj niz staje u memoriju i možemo ga popuniti jednim prolazom kroz $X$.
+Algoritam se poboljšava tehnikom brojanja, koja omogućava razdvajanje petlji. Prvo se prebroje emisije za svako jelo, i to smesti u niz $cnt$, gde je $cnt_i$ broj indeksa $j$ gde $X_j = i$. Pošto su sve vrednosti $X_i$ najviše $N$, nema problema sa memorijom i određuje se jednim prolazom kroz $X$.
 	
-Sada je dovoljno da prođemo kroz $Z$, i za svako $Z_i$ ukupnom broju dodamo $C_{Z_i}$ (broj elemenata u $X$ koji bi bili odgovarajući par). Vremenska složenost je sada $\mathcal{O}(N)$, sasvim dovoljno za $N \leq 10^5$.
+Sada je dovoljno da prođemo kroz $Z$, i za svako $Z_i$ ukupnom broju dodamo $cnt_{Z_i}$ (broj elemenata u $X$ koji bi bili odgovarajući par). Vremenska složenost je sada $\mathcal{O}(N)$, dovoljno za $N \leq 10^5$.
 	
 ``` cpp title="01_kuvar.cpp" linenums="1"
 #include <cstdio>
