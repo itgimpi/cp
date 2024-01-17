@@ -61,18 +61,6 @@ onda jela po receptu:<br>
 na kraju recepti po scenariju:<br>
 1 3 2 2 <- recept 1 je po scenariju 1, recept 3 po scenariju 2, 2 je po 3 i 2 je po 4<br>
 
-emisije     jela
-+---+       +---+      
-| 1 |  ->   | 1 |
-+---+       +---+
-| 2 |       | 2 |
-+---+       +---+
-| 3 |       | 3 |
-+---+       +---+
-| 4 |       | 4 |
-+---+       +---+
-
-
 Ako se odluči za prvu epizodu, praviće jelo $1$, koje se pravi samo po drugom receptu. Za taj recept postoje dva moguća scenarija: treći i četvrti.
 
 Slično, drugoj epizodi odgovaraju treći i četvrti scenario.
@@ -111,8 +99,8 @@ int main() {
     int x[] = {1, 1, 4, 3}, y[] = {3, 1, 3, 4}, z[] = {1, 3, 2, 2}; // test primer 1
 
     long long res = 0;
-    for(int i = 0; i < n; i++)  // za svaku emisiju...
-        for(int j = 0; j < n; j++)   // za svaki scenario...
+    for (int i = 0; i < n; i++)  // za svaku emisiju...
+        for (int j = 0; j < n; j++)   // za svaki scenario...
             if (x[i] == y[z[j]-1])   // -1 zbog prebacivanja sa 1, 2, 3, ... na 0, 1, 2, ...
                 res++; 
                 
@@ -156,13 +144,13 @@ int cnt[100010];                     // za brojanje emisija, inicijalno sve na 0
 int main() {
     ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0); // bez sinhronizacije
     int n; cin >> n; // unos
-    for(int i = 0; i < n; i++) cin >> x[i];
-    for(int i = 0; i < n; i++) cin >> y[i];
-    for(int i = 0; i < n; i++) cin >> z[i];
+    for (int i = 0; i < n; i++) cin >> x[i];
+    for (int i = 0; i < n; i++) cin >> y[i];
+    for (int i = 0; i < n; i++) cin >> z[i];
 	
     long long res = 0;
-    for(int i = 0; i < n; i++)  // za svaku emisiju...
-        for(int j = 0; j < n; j++)   // za svaki scenario...
+    for (int i = 0; i < n; i++)  // za svaku emisiju...
+        for (int j = 0; j < n; j++)   // za svaki scenario...
             if (x[i] == y[z[j]-1])   // -1 zbog prebacivanja sa 1, 2, 3, ... na 0, 1, 2, ...
                 res++;               // ako je isto jelo...
                 
@@ -195,7 +183,7 @@ int main() {
         cnt[x[i]]++;   
                 
     // za svaki scenario koji vodi ka nekom jelu, dodaj u resenje broj emisija o tom jelu
-    for(int i = 0; i < n; i++) res += cnt[y[z[i] - 1]];
+    for (int i = 0; i < n; i++) res += cnt[y[z[i] - 1]];
 	
     cout << res;
     return 0; }
@@ -215,7 +203,7 @@ int main() {
     int *px, *py, *pz, *pcnt;
 
     long long res = 0;
-    for(px = x; px < x + n; px++) {  // broj emisija za svako jelo
+    for (px = x; px < x + n; px++) {  // broj emisija za svako jelo
         //cnt [ *px ]++;   // nizovski
         //(*(pcnt + *px))++; // pokazivacki kratko
         pcnt = cnt + *px;
@@ -247,16 +235,16 @@ int main() {
     ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
     int n; cin >> n;
-    for(int i = 0; i < n; i++) cin >> x[i];
-    for(int i = 0; i < n; i++) cin >> y[i];
-    for(int i = 0; i < n; i++) cin >> z[i];
+    for (int i = 0; i < n; i++) cin >> x[i];
+    for (int i = 0; i < n; i++) cin >> y[i];
+    for (int i = 0; i < n; i++) cin >> z[i];
 	
     long long res = 0;
-    for(int i = 0; i < n; i++)  // broj emisija za svako jelo
+    for (int i = 0; i < n; i++)  // broj emisija za svako jelo
         cnt[x[i]]++;   
                 
     // za svaki scenario koji vodi ka nekom jelu, dodaj u resenje broj emisija o tom jelu
-    for(int i = 0; i < n; i++) res += cnt[y[z[i] - 1]];
+    for (int i = 0; i < n; i++) res += cnt[y[z[i] - 1]];
 	
     cout << res;
     return 0; }
