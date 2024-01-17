@@ -95,38 +95,174 @@ Test primeri su podeljeni u pet disjunktnih grupa:
 - U testovima vrednim 10 poena: svi $Z_i$ su isti.
 - U testovima vrednim 20 poena: $Z_i = i$ za sve $1 \leq i \leq N$.
 - U testovima vrednim 30 poena: nema dodatnih ograničenja.
-	
-## Rešenje za 40 poena
 
-``` cpp title="01_kuvar.cpp" linenums="1"
+## Rešenje
+
+Prva dva podzadatka mogu lako da se reše sa dve ugnježdene petlje koje isprobavaju svaki par $(i, j)$ i broje za koliko takvih parova je $X_i = Z_{Y_j}$. Vremenska složenost ovog algoritma je $\mathcal{O}(N^2)$, što nije dovoljno za preostale podzadatke.
+
+## Rešenje za test primer 1 ( klasične petlje )
+
+``` cpp title="kuvar1.cpp" linenums="1"
 #include <bits/stdc++.h>
-using namespace std;
+using namespace std;	
+	
+int main() {
+    int n = 4;
+    int x[] = {1, 1, 4, 3}, y[] = {3, 1, 3, 4}, z[] = {1, 3, 2, 2}; // test primer 1
 
-int main(){
-    int n; cin >> n;
-    int x[n], y[n], z[n];
-    for (int i=0; i<n; i++)
-        cin >> x[i];
-
-    for (int i=0; i<n; i++)
-        cin >> y[i];
-
-    for (int i=0; i<n; i++)
-        cin >> z[i];
-
-    int res=0;
-    for (int i=0; i<n; i++) 
-        for (int j=0; j<n; j++)
-            if (x[i] == y[j])
-                for (int k=0; k<n;k++)
-                    if (z[k] == j+1) res++;
-
+    long long res = 0;
+    for(int i = 0; i < n; i++)  // za svaku emisiju...
+        for(int j = 0; j < n; j++)   // za svaki scenario...
+            if (x[i] == y[z[j]-1])   // -1 zbog prebacivanja sa 1, 2, 3, ... na 0, 1, 2, ...
+                res++; 
+                
     cout << res;
-
-    return 0;}
+    return 0; }
 ```
 
-## mape
+## Rešenje za test primer 1 ( pokazivači )
+
+``` cpp title="kuvar2.cpp" linenums="1"
+#include <bits/stdc++.h>
+using namespace std;    
+
+int main() {
+    int n = 4;
+    int x[] = {1, 1, 4, 3}, y[] = {3, 1, 3, 4}, z[] = {1, 3, 2, 2}; // test primer 1
+    int *px, *py, *pz;
+	
+    int res = 0;
+    for (int i = 0; i < n; i++) {  
+        px = x + i;
+        for (int j = 0; j < n; j++) {
+            //if (x[i] == y[z[j]-1])    res++; 
+            pz = z + j;
+            py = y + *pz - 1;
+            if ( *px == *py ) res++;    } }
+                
+    cout << res;
+    return 0; }
+```
+
+## Rešenje za 40 poena
+
+``` cpp title="kuvar3.cpp" linenums="1"
+#include <bits/stdc++.h>
+using namespace std;	
+
+int x[100010], y[100010], z[100010]; // ako se koriste statički nizovi, deklaracija je pre main-a
+int cnt[100010];                     // za brojanje emisija, inicijalno sve na 0
+	
+int main() {
+    ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0); // bez sinhronizacije
+    int n; cin >> n; // unos
+    for(int i = 0; i < n; i++) cin >> x[i];
+    for(int i = 0; i < n; i++) cin >> y[i];
+    for(int i = 0; i < n; i++) cin >> z[i];
+	
+    long long res = 0;
+    for(int i = 0; i < n; i++)  // za svaku emisiju...
+        for(int j = 0; j < n; j++)   // za svaki scenario...
+            if (x[i] == y[z[j]-1])   // -1 zbog prebacivanja sa 1, 2, 3, ... na 0, 1, 2, ...
+                res++;               // ako je isto jelo...
+                
+    cout << res;
+    return 0; }
+```
+
+
+	
+## Glavno rešenje
+	
+Algoritam se poboljšava tehnikom brojanja, koja omogućava razdvajanje petlji. Prvo se prebroje emisije za svako jelo, i to smesti u niz $cnt$, gde je $cnt_i$ broj indeksa $j$ gde $X_j = i$. Pošto su sve vrednosti $X_i$ najviše $N$, nema problema sa memorijom i određuje se jednim prolazom kroz $X$.
+	
+Sada je dovoljno da prođemo kroz $Z$, i za svako $Z_i$ ukupnom broju dodamo $cnt_{Z_i}$ (broj elemenata u $X$ koji bi bili odgovarajući par). Vremenska složenost je sada $\mathcal{O}(N)$, dovoljno za $N \leq 10^5$.
+
+## Rešenje za test primer 1 ( klasične petlje )
+
+``` cpp title="kuvar4.cpp" linenums="1"
+#include <bits/stdc++.h>
+using namespace std;	
+
+int cnt[5];           // za brojanje emisija, inicijalno sve na 0
+	
+int main() {
+    int x[] = {1, 1, 4, 3}, y[] = {3, 1, 3, 4}, z[] = {1, 3, 2, 2}; // nizovi
+    int n = 4;
+	
+    int res = 0;
+    for(int i = 0; i < n; i++)  // broj emisija za svako jelo
+        cnt[x[i]]++;   
+                
+    // za svaki scenario koji vodi ka nekom jelu, dodaj u resenje broj emisija o tom jelu
+    for(int i = 0; i < n; i++) res += cnt[y[z[i] - 1]];
+	
+    cout << res;
+    return 0; }
+```
+
+## Rešenje za test primer 1 ( pokazivači )
+
+``` cpp title="kuvar5.cpp" linenums="1"
+#include <bits/stdc++.h>
+using namespace std;    
+
+int cnt[5];           // za brojanje emisija, inicijalno sve na 0
+    
+int main() {
+    int n = 4;
+    int x[] = {1, 1, 4, 3}, y[] = {3, 1, 3, 4}, z[] = {1, 3, 2, 2}; // nizovi
+    int *px, *py, *pz, *pcnt;
+
+    long long res = 0;
+    for(px = x; px < x + n; px++) {  // broj emisija za svako jelo
+        //cnt [ *px ]++;   // nizovski
+        //(*(pcnt + *px))++; // pokazivacki kratko
+        pcnt = cnt + *px;
+        (*pcnt)++; }
+                
+    px = pcnt = NULL; // ne mora, zbog preglednisti
+    //for(int i = 0; i < n; i++) res += cnt[y[z[i] - 1]]; // nizovski
+    
+    for(int i = 0; i < n; i++) {
+        pz = z + i;
+        py = y + *pz - 1;
+        pcnt = cnt + *py;
+        res += *pcnt; }
+    
+    cout << res;
+    return 0; }
+```
+
+## Rešenje za 100 poena
+
+``` cpp title="kuvar6.cpp" linenums="1"
+#include <bits/stdc++.h>
+using namespace std;	
+const int N = 100005; // maks. dimenzija nizova
+int x[N], y[N], z[N]; // nizovi
+int cnt[N];           // za brojanje emisija, inicijalno sve na 0
+	
+int main() {
+    ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+
+    int n; cin >> n;
+    for(int i = 0; i < n; i++) cin >> x[i];
+    for(int i = 0; i < n; i++) cin >> y[i];
+    for(int i = 0; i < n; i++) cin >> z[i];
+	
+    long long res = 0;
+    for(int i = 0; i < n; i++)  // broj emisija za svako jelo
+        cnt[x[i]]++;   
+                
+    // za svaki scenario koji vodi ka nekom jelu, dodaj u resenje broj emisija o tom jelu
+    for(int i = 0; i < n; i++) res += cnt[y[z[i] - 1]];
+	
+    cout << res;
+    return 0; }
+```
+
+## mape za 100 poena
 
 int
 ``` cpp title="01_kuvar.cpp" linenums="1"
@@ -168,7 +304,7 @@ int main()
 ```
 
 ull
-``` cpp title="01_kuvar.cpp" linenums="1"
+``` cpp title="02_kuvar.cpp" linenums="1"
 sing namespace std;
 
 int main()
@@ -206,32 +342,3 @@ int main()
     return 0;
 }
 ```
-	
-## Glavno rešenje
-Prva dva podzadatka mogu lako da se reše sa dve ugnježdene petlje koje isprobavaju svaki par $(i, j)$ i broje za koliko takvih parova je $X_i = Z_{Y_j}$. Vremenska složenost ovog algoritma je $\mathcal{O}(N^2)$, što nije dovoljno za preostale podzadatke.
-	
-Algoritam se poboljšava tehnikom brojanja, koja omogućava razdvajanje petlji. Prvo se prebroje emisije za svako jelo, i to smesti u niz $cnt$, gde je $cnt_i$ broj indeksa $j$ gde $X_j = i$. Pošto su sve vrednosti $X_i$ najviše $N$, nema problema sa memorijom i određuje se jednim prolazom kroz $X$.
-	
-Sada je dovoljno da prođemo kroz $Z$, i za svako $Z_i$ ukupnom broju dodamo $cnt_{Z_i}$ (broj elemenata u $X$ koji bi bili odgovarajući par). Vremenska složenost je sada $\mathcal{O}(N)$, dovoljno za $N \leq 10^5$.
-	
-``` cpp title="01_kuvar.cpp" linenums="1"
-#include <cstdio>
-#include <algorithm>
-	
-const int N = 100005;
-int x[N], y[N], z[N];
-int cnt[N];
-	
-int main() {
-    int n;
-    scanf("%d", &n);
-    for(int i = 0; i < n; i++) scanf("%d", &x[i]);
-    for(int i = 0; i < n; i++) scanf("%d", &y[i]);
-    for(int i = 0; i < n; i++) scanf("%d", &z[i]);
-	
-    long long res = 0;
-    for(int i = 0; i < n; i++) cnt[x[i]]++;
-    for(int i = 0; i < n; i++) res += cnt[y[z[i] - 1]];
-	
-    printf("%lld\n", res);
-    return 0; }
