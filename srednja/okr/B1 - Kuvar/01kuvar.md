@@ -107,7 +107,7 @@ int main() {
     cout << res;
     return 0; }
 ```
-
+Rešenje preko pokazivača. Ako se kod postavi na https://pythontutor.com/ lako se uočavaju preslikavanja.
 ## Rešenje za test primer 1 ( pokazivači )
 
 ``` cpp title="kuvar2.cpp" linenums="1"
@@ -188,7 +188,7 @@ int main() {
     cout << res;
     return 0; }
 ```
-
+Ako se kod postavi na https://pythontutor.com/ lako se uočavaju preslikavanja.
 ## Rešenje za test primer 1 ( pokazivači )
 
 ``` cpp title="kuvar5.cpp" linenums="1"
