@@ -131,6 +131,8 @@ int main() {
     cout << res;
     return 0; }
 ```
+![go to https://pythontutor.com/ and try](kuvar1.JPG "Brute Force solution")
+
 
 ## Rešenje za 40 poena
 
@@ -221,6 +223,7 @@ int main() {
     cout << res;
     return 0; }
 ```
+![go to https://pythontutor.com/ and try](kuvar2.JPG "Solution using Counting")
 
 ## Rešenje za 100 poena
 
