@@ -131,6 +131,8 @@ int main() {
     cout << res;
     return 0; }
 ```
+![go to https://pythontutor.com/ and try](kuvar1.JPG "Brute Force solution")
+
 
 ## Rešenje za 40 poena
 
@@ -221,6 +223,7 @@ int main() {
     cout << res;
     return 0; }
 ```
+![go to https://pythontutor.com/ and try](kuvar2.JPG "Solution using Counting")
 
 ## Rešenje za 100 poena
 
@@ -232,7 +235,8 @@ int x[N], y[N], z[N]; // nizovi
 int cnt[N];           // za brojanje emisija, inicijalno sve na 0
 	
 int main() {
-    ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+    ios_base::sync_with_stdio(false); 
+    cin.tie(0); cout.tie(0);
 
     int n; cin >> n;
     for (int i = 0; i < n; i++) cin >> x[i];
@@ -330,3 +334,5 @@ int main()
     return 0;
 }
 ```
+
+$The End$
