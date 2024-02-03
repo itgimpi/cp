@@ -5,7 +5,7 @@ if sys.argv[1] == "1":
     # svi fajlovi u *tom direktorijumu u kojem je prepravljac*
     l = []
     for i in os.listdir("."):
-        if os.path.isfile(i):
+        if os.path.isfile(i) and i[len(i) - 3:len(i)] == ".md":
             input_file = open(i, "r")
 
             Lines = input_file.readlines()
