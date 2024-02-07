@@ -22,7 +22,24 @@ if sys.argv[1] == "1":
 
             input_file.close()
             output_file.close()
-
+elif sys.argv[1] == "2":
+    working_dir = sys.argv[2]
+    os.chdir(os.path.join(os.getcwd(), working_dir))
+    for i in os.listdir():
+        c = 0
+        s = ' '
+        if i[len(i) - 3:len(i)] == ".md":
+            file = open(i, "r", encoding="UTF-8")
+            Lines = file.readlines()
+            for j in Lines:
+                c += 1
+                if c == 6:
+                    s = j[2:len(j)-1]
+                    os.mkdir(s)
+                    break          
+            file.close()
+            os.rename(i, os.path.join(s, i))  
+        
 else:
     input_file = open(sys.argv[1], "r")
 
