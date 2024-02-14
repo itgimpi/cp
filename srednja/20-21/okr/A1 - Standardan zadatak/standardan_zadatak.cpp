@@ -1,39 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// switch se moze zameniti sa if else
+int br_poj(const vector<int>& a, int x) { // broj pojavljivanja ako se zna da postoji element u nizu
+    auto lower = lower_bound(a.begin(), a.end(), x);
+    auto upper = upper_bound(a.begin(), a.end(), x);
+    return upper - lower;
+}
+
+int br_manjih(const vector<int>& a, int x) {
+    return a.end() - upper_bound(a.begin(), a.end(), x);
+}
+
+int br_vecih(const vector<int>& a, int x) {
+    return lower_bound(a.begin(), a.end(), x) - a.begin();
+}
+
+// https://arena.petlja.org/competition/20202021okruzno-vezba#tab_133645
 int main()
 {
-    int n, max_1 = 0, max_2 = 0, maxi_1 = 0, maxi_2 = 0;
+    int n, r, l;
+    int radix[1000001];
+    for(int i = 0; i < 1000001; i++) {
+        radix[i] = 0;
+    }
     vector<int> a;
-    map<int, int> mapa;
     cin >> n;
     a.resize(n);
     for(int i = 0; i < n; i++) {
         cin >> a[i];
-        mapa[a[i]];
-        mapa[a[i]]++;
+        radix[a[i]]++;
     }
-    for(auto b : mapa) {
-        if(b.second > max_1) {
-            max_2 = max_1;
-            maxi_2 = maxi_1;
-            max_1 = b.second;
-            maxi_1 = b.first;
-        }
-    }
-    switch(max_1) {
-        case 2:
-            if(a[0] != maxi_1 || a[a.size() - 1] != maxi_1) {
-                cout << (a.size() - 2) / 2 + (a.size() - 2) % 2;
-            }
-            else {
-                cout << (a.size() - max_2) / 2 + (a.size() - max_2) % 2;
-            }
-            break;
-        default:
-            cout << (a.size() - max_1) / 2 + (a.size() - max_1) % 2;
-            break;
-    }
+    sort(a.begin(), a.end());
+    
     return 0;
 }
