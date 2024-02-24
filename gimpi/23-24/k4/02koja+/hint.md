@@ -1,6 +1,5 @@
-Uvek je moguće pronaći optimalno rešenje koje koristi samo jednu kuću. Pretpostavimo da neko optimalno rešenje koristi više kuća. Pogledajmo kuću koju Koja poslednju poseti. Rešenje bi bilo isto ako bi direktno otišao do nje. Neće
-potrošiti više vremena putujući do nje (jer je moraju posetiti u oba rešenja), a svaki minut proveden u drugim kućama mogao bi se provesti na poslednjem.
+Postoji optimalno rešenje koje koristi samo jednu kuću. Recimo da postoji bolje rešenje koje koristi više kuća. Ako se pogleda samo kuća koju Koja poslednju poseti, rešenje je isto ako bi direktno otišao do nje. Ne troši više vremena putujući do nje (jer je posećuje u oba rešenja), a svaki minut proveden u drugim kućama mogao bi se provesti u poslednjoj.
 
-Sada možemo malo pojednostaviti zadatak. Vremena za silazak s brda uopštee nisu potrebna te ih za rešenje ne trebamo koristiti. Za svaku početnu poziciju, moramo pronaći maksimum od ti − abs(a − xi) za svako i. 
+Ako već odmara u samo jednoj kući, ne mora ni da silazi, tako da vremena za silazak uopštee nisu potrebna. Za svaku početnu poziciju, se traži $max(t_i − |a − x_i|)$, za svako i. 
 
-To se može učiniti na različite načine; npr. dva seta, jedan za pozicije levo od trenutne, a drugi za pozicije desno.
+To može na razne načine; npr. dva seta, jedan za pozicije levo od trenutne, drugi za pozicije desno.
