@@ -8,14 +8,14 @@ U grid (celobrojni koordinatni sistem) se dodaju tačke. Posle svake dodate tač
 ```
                 |
                 |
-	S2          |    S1 - veći x-ovi i y-i
+    S2          |    S1 - veći x-ovi i y-i
 x-ovi manji     |
 y-i veći        |
                 |
 ----------------ts----------
                 |
                 |
-	S3          |    S4 - x-ovi veći, 
+    S3          |    S4 - x-ovi veći, 
 x-ovi manji     |         y-i manji
 y-i manji       |
 ```
