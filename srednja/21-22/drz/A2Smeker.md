@@ -6,8 +6,8 @@
 
 U grid (celobrojni koordinatni sistem) se dodaju tačke. Posle svake dodate tačke $t$ treba da se odredi da li postoji tačka $t_s$, tako da važi da je broj tačaka sa većim koordinatama jednak broju tačaka sa manjim koordinatama i da je broj tačaka gde je x veći od y isti sa brojem tačaka gde je x manji od y.
 ```
-				|
-				|
+                |
+                |
 	S2			|    S1 - veći x-ovi i y-i
 x-ovi manji		|
 y-i veći		|
