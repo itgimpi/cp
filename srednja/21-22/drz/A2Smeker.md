@@ -8,16 +8,16 @@ U grid (celobrojni koordinatni sistem) se dodaju tačke. Posle svake dodate tač
 ```
                 |
                 |
-	S2			|    S1 - veći x-ovi i y-i
-x-ovi manji		|
-y-i veći		|
-				|
+	S2          |    S1 - veći x-ovi i y-i
+x-ovi manji     |
+y-i veći        |
+                |
 ----------------ts----------
-				|
-		    	|
-	S3	    	|    S4 - x-ovi veći, 
-x-ovi manji		|         y-i manji
-y-i manji   	|
+                |
+                |
+	S3          |    S4 - x-ovi veći, 
+x-ovi manji     |         y-i manji
+y-i manji       |
 ```
 broj elemenata S1 + broj elemenata S3 = broj elemenata S2 + broj elemenata S4
 
