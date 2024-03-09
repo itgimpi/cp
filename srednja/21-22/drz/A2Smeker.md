@@ -22,9 +22,9 @@ y-i manji       |
 broj elemenata S1 + broj elemenata S3 = broj elemenata S2 + broj elemenata S4
 
 ## Opis ulaza
-U prvom redu je n, broj tačaka. U svakom sledećem redu su koordinate tačke $(x_i, y_i)$ koja se dodaje.
+U prvom redu je n, broj tačaka. U svakom sledećem redu su koordinate nove tačke $(x_i, y_i)$.
 ## Opis izlaza
-Za svaku dodatu tačku odredi tačku ts, ako postoji. Inače -1.
+Za svaku novu tačku odredi tačku ts, ako postoji. Inače -1.
 ## Primer1
 
 ### Ulaz
