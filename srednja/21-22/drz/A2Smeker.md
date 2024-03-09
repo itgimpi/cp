@@ -6,18 +6,18 @@
 
 U grid (celobrojni koordinatni sistem) se dodaju tačke. Posle svake dodate tačke $t$ treba da se odredi da li postoji tačka $t_s$, tako da važi da je broj tačaka sa većim koordinatama jednak broju tačaka sa manjim koordinatama i da je broj tačaka gde je x veći od y isti sa brojem tačaka gde je x manji od y.
 ```
-               |
-               |
-	S2	       |    S1 - veći x-ovi i y-i
-x-ovi manji	   |
-y-i veći       |
-		       |
----------------ts----------
-               |
-		       |
-	S3	       |    S4 - x-ovi veći, 
-x-ovi manji	   |         y-i manji
-y-i manji      |
+				|
+				|
+	S2			|    S1 - veći x-ovi i y-i
+x-ovi manji		|
+y-i veći		|
+				|
+----------------ts----------
+				|
+		    	|
+	S3	    	|    S4 - x-ovi veći, 
+x-ovi manji		|         y-i manji
+y-i manji   	|
 ```
 broj elemenata S1 + broj elemenata S3 = broj elemenata S2 + broj elemenata S4
 
@@ -88,9 +88,7 @@ Test primeri su podeljeni u 4 disjunktne grupe:
 
 #  Rešenje
 
-
-
-  
+ 
 ## Rešenje kad je $n \leq 500$
 Za svaku novu tačku se izbroje tačke u sva 4 skupa, $O(n^3)$.
 
