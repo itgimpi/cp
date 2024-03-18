@@ -11,8 +11,7 @@ hide:
  |:-:|:-:|
  | 1000ms | 256MB |
 
-Postoji N duži koje idu od $(a_i, 1)$ do $(b_i, 2)$. Koliko najmanje duži se mora spojiti kako bi postojao put od do bilo koje dve duži.
-Duži se smatraju spojenim ako se seku ili ako dele zajedničku tačku.
+Postoji N duži koje idu od $(a_i, 1)$ do $(b_i, 2)$. Koliko ostrva postoji?
 
 ## Opis ulaza
 
@@ -22,7 +21,7 @@ Duži se smatraju spojenim ako se seku ili ako dele zajedničku tačku.
 
 ## Opis izlaza
 
- Na izlaz ispisati minimalan broj duži koje se moraju spojiti kako bi postojao put od do bilo koje dve duži.
+ Na izlaz ispisati broj ostrva.
 
 ## Ograničenja
 
@@ -34,7 +33,7 @@ Duži se smatraju spojenim ako se seku ili ako dele zajedničku tačku.
 ## Podzadaci
 
  1. (20 poena) $N \leq 5000$.
- 2. (20 poena) Ne postoji put između duži $i$ i $j$ ako one nisu direktno spojene.
+ 2. (20 poena) Svako ostrvo ima najviše 2 duži.
  3. (20 poena) Od svake duži postoji put do najviše 5 duži.
  4. (40 poena) Bez dodatnih ograničenja.
 
@@ -60,9 +59,7 @@ Duži se smatraju spojenim ako se seku ili ako dele zajedničku tačku.
 
  ![](slike/slika1.png)
 
- Potrebno je spojiti dve duži, na primer drugu i četvrtu, onda bi sve duži bile spojene.
-
- ![](slike/slika2.png)
+ Postoje dva ostrva.
 
 ### Primer 2
 
@@ -82,6 +79,9 @@ Duži se smatraju spojenim ako se seku ili ako dele zajedničku tačku.
 
 #### Objašnjenje
 
+![](slike/slika2.png)
+
+Postoje tri ostrva.
 
 === "Rešenje"
 
