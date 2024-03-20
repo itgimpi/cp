@@ -11,19 +11,19 @@ hide:
  |:-:|:-:|
  | 2000ms | 256MB |
 
- U dalekom Japanu haraju mnogobrojne kriminalne grupe, poznate kao jakuza klanovi. Njihovi članovi, jakuze, lede krv u žilama svima koji su te loše sreće da ih sretnu. U glavnom gradu Japana, Tokiju, se među jakuzama trenutno odvija bitka za vlast. Od raznih strašnih kriminalaca, kao najjači i najopasniji se izdvaja Moma, koji želi da osvoji ceo Tokio.
-
- Tokio se može zamisliti kao matrica dimenzija $M\times N$. Prvog dana će Moma zauzeti jedno (bilo koje) polje te matrice. U svakom narednom danu, on može zauzeti bilo koje polje koje je susedno nekom polju koje je već zauzeo. Dva polja su susedna ako dele stranu. Kako je Moma najopasniji jakuza, on svako polje može osvojiti za dan, pa će posle $MN$ dana ceo Tokio biti njegov.
-
- Međutim, iako ga nijedna jakuza ne može pobediti, postoji jedna stvar koja može - njegovo sujeverje. On poseduje svoju mapu Tokija, i na svakom polju je napisao jedan broj od $1$ do $MN$, tako da je svaki broj napisan tačno jednom. On smatra da je jedini način da osvoji ceo Tokio da **baš u $i$-tom danu osvoji polje na kojem je napisao broj $i$.** Međutim, on je promenljivog raspoloženja, pa će $Q$ puta promeniti brojeve na svojoj mapi tako što zameni brojeve u neka dva polja. Vaš zadatak je da za svaih $Q+1$ stanja mape (na početku i posle svakog upita) odredite da li je moguće da Moma ispuni svoj cilj.
+ Postoji matrica $M\times N$ u kojoj su na svakom polju upisani prirodni brojevi od 1 do $MN$ u proizvoljnom rasporedu.
+ Polja se mogu posetiti tako što se poseti polje koje ima na sebi broj trenutno posećenih polja + 1 i deli stranicu sa već posećenim poljem. Prvo polje je uvek ono na kojem je upisano 1.
+ Ima Q upita koji su tipa $x_a$ $y_a$ $x_b$ $y_b$ i označavaju da se u matrici menjaju vrednosti polja $(x_a,y_a)$ i $(x_b,y_b)$. Promene se prenose i na sledeće upite.
+ Da li je moguće posetiti celu matricu?
 
 ## Opis ulaza
 
- U prvoj liniji standardnog ulaza nalazi se tri prirodna broja $N,M,Q$ - dimenzije Tokija i broj promena Momine mape. U $i$-toj od narednih $N$ linija se nalazi po $M$ prirodnih brojeva, gde $j$-ti predstavlja vrednost $A_{ij}$ - broj koji stoji na početku u polju $(i,j)$ na Mominoj mapi. U $i$-toj od narednih $Q$ linija se nalaze po $4$ cela broja $xa$, $ya$, $xb$, $yb$ koji označavaju da će u $i$-toj promeni zameniti vrednosti na poljima $(xa,ya)$ i $(xb,yb)$.
+ U prvom redu su tri prirodna broja $N,M,Q$ - dimenzije matrice i broj promena. 
+ U $i$-toj od narednih $N$ linija se nalazi po $M$ prirodnih brojeva, gde $j$-ti predstavlja vrednost $A_{ij}$ - broj koji stoji na početku u polju $(i,j)$ matrice. U $i$-toj od narednih $Q$ linija se nalaze po $4$ cela broja $x_a$, $y_a$, $x_b$, $y_b$ koji označavaju da će u $i$-toj promeni zameniti vrednosti na poljima $(x_a,y_a)$ i $(x_b,y_b)$.
 
 ## Opis izlaza
 
- Na standardni izlaz ispišite $Q+1$ linija: u $i$-toj liniji treba da piše `DA` ako Moma može da osvoji Tokio u $i$-tom stanju mape, a `NE` u suprotnom.
+ Na standardni izlaz ispisati $Q+1$ linija: u $i$-toj liniji treba da piše `DA` ako je moguće posetiti celu matricu, a `NE` u suprotnom.
 
 ## Ograničenja
 
@@ -31,7 +31,6 @@ hide:
 - $1 \leq Q\leq 300.000$
 - $1 \leq A_{ij} \leq NM$
 - Svaka vrednost od $1$ do $NM$ se pojavljuje tačno jednom u nizu $A_{ij}$.
--
 
  Dodatno, za svaki od $Q$ upita važi:
 
@@ -69,7 +68,7 @@ hide:
 
 #### Objašnjenje
 
- U početnom izgledu Tokija Moma će u prvom danu osvojiti polje $(1,1)$. Narednih dana će osvajati polja $(1,2)$, $(1,3)$, $(2,1)$, $(2,2)$, $(2,3)$, $(3,1)$, $(3,2)$, $(3,3)$, koja su redom susedna poljima $(1,1)$, $(1,2)$, $(1,1)$, $(1,2)$, $(1,3)$, $(2,1)$, $(2,2)$, $(2,3)$, koja već poseduje u tom trenutku. Međutim, nakon zamene neće moći posle osvajanja polja označenog sa $1$ da u sledećem potezu osvoji polje označeno sa $2$.
+ U početnom stanju matrice će prvo biti posećeno polje $(1,1)$. Narednih dana će se posetiti polja $(1,2)$, $(1,3)$, $(2,1)$, $(2,2)$, $(2,3)$, $(3,1)$, $(3,2)$, $(3,3)$, koja su redom susedna poljima $(1,1)$, $(1,2)$, $(1,1)$, $(1,2)$, $(1,3)$, $(2,1)$, $(2,2)$, $(2,3)$, koja su već posećena u tom trenutku. Međutim, nakon zamene neće moći posle posećenog polja označenog sa $1$ da se poseti polje označeno sa $2$.
 
 === "Rešenje"
 
