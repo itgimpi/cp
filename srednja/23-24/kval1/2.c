@@ -4,39 +4,31 @@ int main()
 {
     int n, q;
     scanf("%d", &n);
-    int a[n], c[n];
+    long long a[n], c[n];
     for(int i = 0; i < n; i++) {
-        scanf("%d", &a[i]);
+        scanf("%lld", &a[i]);
     }
     for(int i = 0; i < n; i++) {
-        scanf("%d", &c[i]);
+        scanf("%lld", &c[i]);
     }
 
     scanf("%d", &q);
-    int k[q], x[q];
+    long long x, k;
     for(int i = 0; i < q; i++) {
-        scanf("%d", &k[i]);
+        scanf("%lld %lld", &k, &x);
+        a[k-1] += x;
     }
-    for(int i = 0; i < q; i++) {
-        scanf("%d", &x[i]);
-    }
-    
-    int dod[n + 1];
-    for(int i = 0; i <= n; i++) {
-        dod[i] = 0;
-    }
-    for(int i = 0; i < q; i++) {
-        dod[k[i] - 1] += x[i];
-    }
-    for(int i = 0; i < n; i++) {
-        a[i] += dod[i];
+    for(int i = 0; i < n - 1; i++) {
         if(a[i] > c[i]) {
-            dod[i + 1] += a[i] - c[i];
+            a[i+1] += a[i] - c[i];
             a[i] = c[i];
         }
     }
+    if(a[n-1] > c[n-1]) {
+        a[n-1] = c[n-1];
+    }
     for(int i = 0; i < n; i++) {
-        printf("%d ", a[i]);
+        printf("%lld ", a[i]);
     }
     printf("\n");
     return 0;
