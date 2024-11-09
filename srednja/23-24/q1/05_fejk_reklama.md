@@ -11,7 +11,7 @@ Svetski poznata kompanija "Najbolji ltd." razvija novu igru za mobilne telefone.
 	
 U igri ima $T$ nivoa. 
 	
-Igrač započinje nivo sa vojskom veličine $S$ i nailazi na $N$ prepreka, sa ciljem maksimizovanja veličine svoje vojske nakon svih prepreka. Neka je veličina vojske koju igrač poseduje pre $i$-te prepreke jednaka $x$. U $i$-toj od prepreci igrač može da bira između dve opcije, $*m_i$ ili +$a_i$. Ukoliko odabere prvu opciju, veličina njegove vojske nakon $i$-te prepreke postaje $x*m_i$, a ukoliko odabere drugu opciju veličina njegove vojske postaje $x+a_i$.
+Igrač započinje nivo sa vojskom veličine $S$ i nailazi na $N$ prepreka, sa ciljem maksimizovanja veličine svoje vojske nakon svih prepreka. Neka je veličina vojske koju igrač poseduje pre $i$-te prepreke jednaka $x$. U $i$-toj od prepreci igrač može da bira između dve opcije, "*$m_i$" ili +$a_i$. Ukoliko odabere prvu opciju, veličina njegove vojske nakon $i$-te prepreke postaje $x*m_i$, a ukoliko odabere drugu opciju veličina njegove vojske postaje $x+a_i$.
 	
 Dodatno, nakon $i$-te prepreke, veličina vojske koju igrač poseduje mora biti barem $l_i$ i ne sme biti veća od $r_i$ (u suprotnom most posle $i$-te prepreke pukne pod prevelikim opterećenjem).
 	
