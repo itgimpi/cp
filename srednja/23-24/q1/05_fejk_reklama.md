@@ -173,7 +173,7 @@ Koristimo ideje iz prethodnog podzadatka. Potrebno je smanjiti vremensku složen
 	
 Jasno je da ako dokažemo i izvedemo drugu činjenicu, ukupna složenost biće $O(2^{N/2})$.
 	
-Zamislimo da imamo trenutni niz $x_1,x_2,\ldots ,x_k$ (u prvom delu meet in the middle algoritma ) i da njega ažuriramo novim operacijama "*$m$" i "+$a$".  Poznato je da ako je početni niz sortiran, tada su i nizovi 
+Zamislimo da imamo trenutni niz $x_1,x_2,\ldots ,x_k$ (u prvom delu meet in the middle algoritma ) i da njega ažuriramo novim operacijama "\*$m$" i "+$a$".  Poznato je da ako je početni niz sortiran, tada su i nizovi 
 	
 $$
 	m\cdot x_1,m\cdot x_2, \ldots, m\cdot x_k;
