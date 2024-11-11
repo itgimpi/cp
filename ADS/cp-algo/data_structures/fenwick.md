@@ -115,9 +115,7 @@ h(31) = 63 &= 0111111_2 \\\\
 
 Unsurprisingly, there also exists a simple way to perform $h$ using bitwise operations:
 
-$$h(j) = j ~|~ (j+1),$$
-
-where $|$ is the bitwise OR operator.
+`h(j) = j | (j+1)`, where `|` is the bitwise OR operator.
 
 The following image shows a possible interpretation of the Fenwick tree as tree.
 The nodes of the tree show the ranges they cover.
