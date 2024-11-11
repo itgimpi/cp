@@ -100,9 +100,9 @@ g(15) = g(1111_2) = 0000_2 &= 0 \\\\
 
 There exists a simple implementation using bitwise operations for the non-trivial operation described above:
 
-$$g(i) = i ~\&~ (i+1),$$
+`g(i) = i & (i+1)`,
 
-where $ \&$ is the bitwise AND operator. It is not hard to convince yourself that this solution does the same thing as the operation described above.
+where `&` is the bitwise AND operator. It is not hard to convince yourself that this solution does the same thing as the operation described above.
 
 Now, we just need to find a way to iterate over all $j$'s, such that $g(j) \le i \le j$.
 
@@ -290,13 +290,13 @@ g(6) = g(110_2) = 100_2 &= 4 \\\\
 g(4) = g(100_2) = 000_2 &= 0 \\\\
 \end{align}$$
 
-The last set bit can be extracted using $i ~\&~ (-i)$, so the operation can be expressed as:
+The last set bit can be extracted using `i & (-i)`, so the operation can be expressed as:
 
-$$g(i) = i - (i ~\&~ (-i)).$$
+`g(i) = i - (i & (-i))`.
 
 And it's not hard to see, that you need to change all values $T[j]$ in the sequence $i,~ h(i),~ h(h(i)),~ \dots$ when you want to update $A[j]$, where $h(i)$ is defined as:
 
-$$h(i) = i + (i ~\&~ (-i)).$$
+`h(i) = i + (i & (-i))`.
 
 As you can see, the main benefit of this approach is that the binary operations complement each other very nicely.
 
