@@ -102,7 +102,7 @@ There exists a simple implementation using bitwise operations for the non-trivia
 
 $$g(i) = i ~\&~ (i+1),$$
 
-where $\&$ is the bitwise AND operator. It is not hard to convince yourself that this solution does the same thing as the operation described above.
+where $ \&$ is the bitwise AND operator. It is not hard to convince yourself that this solution does the same thing as the operation described above.
 
 Now, we just need to find a way to iterate over all $j$'s, such that $g(j) \le i \le j$.
 
