@@ -81,7 +81,7 @@ The computation of $g(i)$ is defined using the following simple operation:
 we replace all trailing $1$ bits in the binary representation of $i$ with $0$ bits.
 
 In other words, if the least significant digit of $i$ in binary is $0$, then $g(i) = i$.
-And otherwise the least significant digit is a $1$, and we take this $1$ and all other trailing $1$s and flip them.
+And otherwise the least significant digit is a $1$, and we take this $1$ and all other trailing $1$'s and flip them.
 
 For instance we get
 
