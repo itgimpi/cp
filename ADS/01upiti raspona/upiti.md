@@ -162,18 +162,19 @@ int main() {
     ios_base::sync_with_stdio(false); cin.tie(0);
     int n; cin >> n;
     vector<int> a(n);
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) // orig. niz
         cin >> a[i];
 
     vector<int> drvo = formirajDrvo(a);
     int m; cin >> m; // br. upita
 
     for (int i = 0; i < m; i++) {
-        string upit;
-        cin >> upit;
+        string upit; cin >> upit;
+
         if (upit == "p") { // upis
             int i, v; cin >> i >> v >> ws;
             postavi(drvo, i, v); } 
+            
         else if (upit == "z") { // zbir
             int a, b; cin >> a >> b; // od a do b
             cout << zbirSegmenta(drvo, a, b) << '\n'; } }
