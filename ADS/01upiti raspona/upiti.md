@@ -38,9 +38,7 @@ vreme	memorija	ulaz	izlaz	test primeri
 Улаз
 У првој линији стандардног улаза налази се број n (1≤n≤100000), а у наредној линији низ од n елемената (елементи су цели бројеви између 0 и 10, раздвојени са по једним размаком). У наредној линији налази се број m (1≤m≤100000), а у наредних m линија упити. Подржане су две врсте упита:
 
-p i
- 
-v – извршавање овог упита подразумева да се у низ на позицију i упише вредност v (0≤i<n, 0≤v≤10).
+p i v – извршавање овог упита подразумева да се у низ на позицију i упише вредност v (0≤i<n, 0≤v≤10).
 
 z a b – извршавање овог упита подразумева да се израчуна и на стандардни излаз испише збир елемената низа који су на позицијама [a,b].
 
@@ -76,23 +74,19 @@ using namespace std;
 
 int main() {
     ios_base::sync_with_stdio(false); cin.tie(0);
-    int n;
-    cin >> n;
+    int n; cin >> n;
     vector<int> niz(n);
     for (int i = 0; i < n; i++)
         cin >> niz[i];
-    int m;
-    cin >> m;
+    int m; cin >> m;
     for (int i = 0; i < m; i++) {
         string upit;
         cin >> upit;
         if (upit == "p") {
-          int i, v;
-          cin >> i >> v >> ws;
+          int i, v; cin >> i >> v >> ws;
           niz[i] = v;
         } else if (upit == "z") {
-          int a, b;
-          cin >> a >> b;
+          int a, b; cin >> a >> b;
           cout << accumulate(next(begin(niz), a), next(begin(niz), b+1), 0) << '\n';
       }
     }
@@ -120,77 +114,68 @@ int stepenDvojke(int n) {
     int s = 1;
     while (s < n)
         s <<= 1;
-    return s;
-}
+    return s; }
 
-// na osnovu datog niza a dužine n 
-// u kom su elementi smešteni od pozicije 0
-// formira se segmentno drvo i elementi mu se smeštaju u niz
-// drvo krenuvši od pozicije 1
+// na osnovu niza a dužine n u kom su elementi od pozicije 0
+// formira se drvo i elementi mu se smeštaju u niz od pozicije 1
 vector<int> formirajDrvo(const vector<int>& a) {
     int n = stepenDvojke(a.size());
     vector<int> drvo(2*n, 0);
-    // kopiramo originalni niz u listove
+    // kopira originalni niz u listove
     copy(begin(a), end(a), next(begin(drvo), n));
-    // ažuriramo roditelje već upisanih elemenata
+    // ažurira roditelje već upisanih elemenata
     for (int k = n-1; k >= 1; k--)
-      drvo[k] = drvo[2*k] + drvo[2*k+1];
-    return drvo;
-}
+        drvo[k] = drvo[2*k] + drvo[2*k+1];
+    return drvo; }
 
 // izračunava se zbir elemenata polaznog niza dužine n koji se 
 // nalaze na pozicijama iz segmenta [a, b] na osnovu segmentnog drveta
-// koje je smešteno u nizu drvo, krenuvši od pozicije 1
+// koje je smešteno u nizu drvo, od pozicije 1
 int zbirSegmenta(const vector<int>& drvo, int a, int b) {
     int n = drvo.size() / 2;
-    a += n; b += n;
+    a += n; b += n; // ineksi u stablu
     int zbir = 0;
     while (a <= b) {
-        if (a % 2 == 1) zbir += drvo[a++];
-        if (b % 2 == 0) zbir += drvo[b--];
+        if (a % 2 == 1) // levi nepar?
+            zbir += drvo[a++];
+        if (b % 2 == 0) // desni par?
+            zbir += drvo[b--];
         a /= 2;
-        b /= 2;
-    }
-    return zbir;
-}
+        b /= 2; }
+    return zbir; }
 
-// ažurira segmentno drvo smešteno u niz drvo od pozicije 1
+// ažurira segmentno drvo smešteno u niz od pozicije 1
 // koje sadrži elemente polaznog niza a dužine n u kom su elementi
 // smešteni od pozicije 0, nakon što se na poziciju i polaznog
 // niza upiše vrednost v
 void postavi(vector<int>& drvo, int i, int v) {
     int n = drvo.size() / 2;
-    // prvo ažuriramo odgovarajući list
+    // prvo ažurira odgovarajući list
     int k = i + n;
     drvo[k] = v;
-    // ažuriramo sve roditelje izmenjenih čvorova
+    // onda i sve roditelje izmenjenih čvorova
     for (k /= 2; k >= 1; k /= 2)
         drvo[k] = drvo[2*k] + drvo[2*k+1];
 }
 
 int main() {
     ios_base::sync_with_stdio(false); cin.tie(0);
-    int n;
-    cin >> n;
+    int n; cin >> n;
     vector<int> a(n);
     for (int i = 0; i < n; i++)
         cin >> a[i];
+
     vector<int> drvo = formirajDrvo(a);
-    int m;
-    cin >> m;
+    int m; cin >> m; // br. upita
+
     for (int i = 0; i < m; i++) {
         string upit;
         cin >> upit;
-        if (upit == "p") {
-            int i, v;
-            cin >> i >> v >> ws;
-            postavi(drvo, i, v);
-        } else if (upit == "z") {
-            int a, b;
-            cin >> a >> b;
-            cout << zbirSegmenta(drvo, a, b) << '\n';
-        }
-    }
-    return 0;
-}
+        if (upit == "p") { // upis
+            int i, v; cin >> i >> v >> ws;
+            postavi(drvo, i, v); } 
+        else if (upit == "z") { // zbir
+            int a, b; cin >> a >> b; // od a do b
+            cout << zbirSegmenta(drvo, a, b) << '\n'; } }
+    return 0; }
 ```
