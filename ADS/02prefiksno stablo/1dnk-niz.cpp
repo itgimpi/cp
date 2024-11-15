@@ -55,7 +55,7 @@ int kod(char c) { // 4 slova se kodiraju brojevima od 0 do 3
         case 't': return 1;
         case 'g': return 2;
         case 'a': return 3; }
-    return -1; } // nije ctga
+    return -1; } // nije c,t,g,a
 
 struct Cvor { // cvor prefiksnog stabla...
     Cvor* grane[4]; // potencijalne 4 grane za 4 moguća slova na toj poziciji
@@ -128,8 +128,8 @@ int main() {
     ios_base::sync_with_stdio(false); cin.tie(0);
     
     Cvor* koren = nullptr;
-    int n;
-    cin >> n;
+    int n; cin >> n;
+    
     for (int i = 0; i < n; i++) {
         string naredba, niska; cin >> naredba >> niska >> ws;
         if (naredba == "ubaci")
