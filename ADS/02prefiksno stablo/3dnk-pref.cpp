@@ -43,16 +43,14 @@ int kod(char c) { // karaktere iz azbuke kodiramo brojevima
 // cvor prefiksnog drveta
 struct Cvor {
     Cvor* grane[4];
-    int brojPrefiksa;
-};
+    int brojPrefiksa; };
 
 // kreira se novi, prazan cvor
 Cvor* noviCvor() {
     Cvor* novi = new Cvor();
     fill(novi->grane, novi->grane+4, nullptr);
     novi->brojPrefiksa = 0;
-    return novi;
-}
+    return novi; }
 
 // ubacivanje reci str u prefiksno drvo sa korenom koren
 // funkcija vraca novi koren drveta
