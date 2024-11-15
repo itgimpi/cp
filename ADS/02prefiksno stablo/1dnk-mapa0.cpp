@@ -1,11 +1,12 @@
 /* Днк секвенце
 време	меморија	улаз	излаз	тест примери
 2,05 s	64 Mb	стандардни излаз	стандардни улаз	
+
 ДНК секвенце се представљају нискама које се састоје од карактера c, t, a и g. 
 У програму се одржава скуп подсеквенци једне дате генетске секвенце. 
 Програм подржава три операције: убацивање подсеквенце у скуп (ако је подсеквенца већ у скупу, ова операција нема ефекта), 
-избацивање подсеквенце из скупа (ако се подсеквенца не налази у скупу, ова операција нема ефекта) 
-и испистивање да ли се подсеквенца налази у скупу.
+избацивање подсеквенце из скупа (ако се подсеквенца не налази у скупу, ова операција нема ефекта) и 
+испистивање да ли се подсеквенца налази у скупу.
 
 Улаз
 Са стандардног улаза се уноси број упита n (1≤n≤50000), а затим у наредних n редова по један упит. 
@@ -114,9 +115,9 @@ bool sadrzi(cvor *stablo, const string& w, size_t i) {
     return false;   // nismo našli granu sa w[i], pa reč ne postoji
 }
 
-// traži reč w u drvetu na čiji koren ukazuje pokazivač stablo
+// traži reč w u stablu na čiji koren ukazuje pokazivač stablo
 bool sadrzi(cvor* stablo, const string& w) {
-  return sadrzi(stablo, w, 0); }
+    return sadrzi(stablo, w, 0); }
 
 
 void obrisi(cvor* koren) {  // brise prefiksno stablo sa korenom koren
@@ -127,18 +128,23 @@ void obrisi(cvor* koren) {  // brise prefiksno stablo sa korenom koren
 
 int main() {
     ios_base::sync_with_stdio(false); cin.tie(0);
-    cvor* koren = nullptr;
+
+    cvor * koren = nullptr;
+
     int q; cin >> q;
     for (int i = 0; i < q; i++) {
         string upit, niz; cin >> upit >> niz >> ws;
+
         if (upit == "ubaci")
             koren = ubaci(koren, niz);
+
         else if (upit == "izbaci")
             koren = izbaci(koren, niz);
+
         else if (upit == "trazi") {
             if (sadrzi(koren, niz, 0))
                 cout << "da" << "\n";
             else
-                cout << "ne" << "\n";         }    }
-    obrisi(koren);
+                cout << "ne" << "\n"; }  }
+    obrisi(koren); // oslobodi memoriju
     return 0; }
