@@ -69,7 +69,7 @@ Cvor* noviCvor() { // kreira se novi, prazan cvor
     novi->kraj = false; // nije kraj
     return novi; } // vrati adresu novog elementa
 
-Cvor* ubaci(Cvor* koren, const string& niz) { // ubacivanje niza u prefiksno drvo sa korenom koren
+Cvor* ubaci(Cvor* koren, const string &niz) { // ubacivanje niza u prefiksno drvo sa korenom koren
     if (koren == nullptr) // prazno stablo?
         koren = noviCvor();
     Cvor* cvor = koren;
@@ -79,10 +79,10 @@ Cvor* ubaci(Cvor* koren, const string& niz) { // ubacivanje niza u prefiksno drv
             cvor->broj++; } // i ažuriraj br. razl. slova
         cvor = cvor->grane[kod(c)]; }
     cvor->kraj = true;
-    return koren; } // funkcija vraca novi koren drveta
+    return koren; } // vraca novi koren drveta
 
-// funkcija izbacuje sufiks reci str od pozicije i iz drveta sa korenom koren
-// funkcija vraca koren drveta nastalog nakon izbacivanja
+// izbacuje sufiks reci str od pozicije i iz drveta sa korenom koren
+// vraca koren drveta nastalog nakon izbacivanja
 Cvor* izbaci(Cvor* koren, const string& str, size_t i) {
     // ako je drvo vec prazno, nema sta da se izbacuje
     if (koren == nullptr)
@@ -90,7 +90,7 @@ Cvor* izbaci(Cvor* koren, const string& str, size_t i) {
 
     if (i == str.length())  // ako smo dosli do kraja reci
         koren->kraj = false;  // rec brisemo tako sto oznacavamo da u tom cvoru vise nije kraj neke reci
-    else {
+    else { // nije kraj
         if (koren->grane[kod(str[i])] != nullptr) {  // ako postoji grana sa sa tekucim slovom reci
             Cvor* c = izbaci(koren->grane[kod(str[i])], str, i+1);  // brisemo ostatak te reci iz drveta
             if (c == nullptr)  // ako se tim brisanjem potpuno uklonio deo drveta ispod te grane
@@ -138,7 +138,7 @@ int main() {
 
         else if (naredba == "izbaci")
             koren = izbaci(koren, niska);
-            
+
         else if (naredba == "trazi") {
             if (sadrzi(koren, niska))
                 cout << "da" << "\n";
