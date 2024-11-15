@@ -63,18 +63,18 @@ using namespace std;
 int main() {
     ios_base::sync_with_stdio(false); cin.tie(0);
     int n; cin >> n;
-    vector<int> zbirovi_prefiksa(n+1);
-    zbirovi_prefiksa[0] = 0;
+    vector<int> ps(n+1); // prefiksne sume
+    ps[0] = 0;
     for (int i = 0; i < n; i++) {
         int x; cin >> x;
-        zbirovi_prefiksa[i+1] = zbirovi_prefiksa[i] + x; }
+        ps[i+1] = ps[i] + x; }
 
     // za granice segmenata se racunaju i ispisuju njihovi zbirovi
     int q; cin >> q;
     for (int i = 0; i < m; i++) {
         int a, b;
         cin >> a >> b;
-        cout << zbirovi_prefiksa[b+1] - zbirovi_prefiksa[a] << '\n'; }
+        cout << ps[b+1] - ps[a] << '\n'; }
   
   return 0; }
 ```
