@@ -129,13 +129,16 @@ int main() {
     
     Cvor* koren = nullptr;
     int n; cin >> n;
-    
+
     for (int i = 0; i < n; i++) {
         string naredba, niska; cin >> naredba >> niska >> ws;
+
         if (naredba == "ubaci")
             koren = ubaci(koren, niska);
+
         else if (naredba == "izbaci")
             koren = izbaci(koren, niska);
+            
         else if (naredba == "trazi") {
             if (sadrzi(koren, niska))
                 cout << "da" << "\n";
