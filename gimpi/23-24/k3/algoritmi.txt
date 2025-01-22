@@ -1,0 +1,70 @@
+A Veliki mali broj
+
+poslato:
+
+
+
+#1 Najmanji broj se dobija od broja 10...0, povecavajuci cifre sa desne strane (najmanje promene) dok njihov zbir ne postane K.
+#2 Ide se od broja 10 na N−1 i dok je zbir cifara manji od K, trazi prvu cifru s desne strane koja je manja od 9 i poveca za jedan. 
+#3 Ovaj algoritam može da se ubrza tako da se cifre sdesna odmah povecavaju na 9 do zbira K dok ne ostane razlika manja od 9.
+
+#4 Najveci broj se dobija od broja 9...9, smanjujuci cifre s desne strane (najmanje promene) dok njihov zbir ne postane K. 
+#5 Ide se od broja 10 na N − 1 i sve dok je zbir cifara veci od K, trazi prvu cifru s desne strane koja je veca od 0 i smanji je za jedan. 
+#6 Ovaj algoritam može da se ubrza tako da se cifre sdesna odmah smanjuju na 0 dok do zbira K ne ostane razlika manja od 9.
+
+#7 Da bi algoritam radio za mnogo cifara, koristi se niz (lista) cifara, ne celobrojni tip podataka.
+
+
+
+B Najbliži manji broj
+# Broj N se dopuni vodecim nulama do 19 cifara, što je maksimum, s obzirom na ogranicenje K ~ 170. 
+# Generišu se svi moguci kandidati za traženi broj X. 
+# Prvo se na sve moguce nacine bira prefiks zajednickih cifara brojeva N i X, tj.
+# koliko ce se vodecih cifara (izmedju 0 i 18) broja X podudarati s brojem N. Za svaki taj odabir,
+# na sve nacine se bira sledeća cifra broja X (od 0 do 9) koja se razlikuje od odgovarajuce cifre broja N. 
+# Zavisno od odabrane cifre, da li je veca ili manja od odgovarajuce cifre broja N, 
+# zna se da li je kandidat X manji ili veci od N.
+# Kako odrediti ostale cifre broja X? 
+# Ako je X < N, ostali deo broja X treba da bude što veci da bi se maksimalno približili broju N, 
+# i stavljaju se što vece cifre (99...) dok ne bude zbir cifara K, posle cega se X dopuni nulama. 
+# Ako je X > N, ostali deo broja X treba da bude što manji da bi se približili broju N, 
+# X se do kraja dopuni nulama i povecavaju najmanje znacajne cifre (sdesna nalevo) 
+# dok je zbir cifara manji od K.
+# Posle dopune nulama, traži se prva cifru s desne strane koja je manja od 9 i povecava se za jedan, 
+# dok zbir cifara ne postane K.
+# Na kraju od svih uspešno generisanih kandidata za X se bira najbliži broju N.
+
+C Slova i boje
+/* Za svaku mogucu rec od pet slova proverava se zadovoljava li sve pokušaje i na kraju ispisuje koliko reci ih sve zadovoljava. 
+Za generisanje svih mogucih reci od pet slova koristi se, npr pet ugnježdenih for petlji.
+Za proveru zadovoljava li rec neki pokušaj, pretpostavlja se da je ta rec tražena i oboje sva slova pokušaja shodno tome. 
+Ako su boje iste, ta rec zadovoljava taj pokušaj.
+Rec se boji korištenjem pomocnog niza xmz u koji za svako slovo engleske abecede xmz(slovo) na
+pocetku zapisujemo odgovarajucu vrijednost X − Z, gdje X i Z odgovaraju oznakama iz teksta zadatka.
+Potom obilazimo slova u pokušaju i za svako koje nije zeleno, tj. koje se ne podudara sa slovom u traženoj reci, proverava se je li xmz(slovo) > 0. Ako jeste, to slovo je crveno i smanjuje se vrednost xmz(slovo) za 1, inače je crno. */
+
+D Boje i slova
+/* Gleda se slučaj u kojem pokušaj ne sadrži dva ista slova. Rešenje za ovaj slucaj nosilo je 15 bodova.
+Petljom se prolazi po slovima pokušaja i ispisuje ’G’ ako se trenutno slovo podudara s
+odgovarajucim slovom tražene reci, inače drugom petljom prolazimo po svim slovima tražene
+reci i ispisujemo ’R’ ako medju njima pronadjemo trenutno slovo pokušaja, a u suprotnom ispisujemo ’B’.
+Za sve bodove ovo rešenje nadogradjujemo pomocnim nizom xmz u koji za svako slovo xmz(slovo) 
+na pocetku zapisujemo odgovarajucu vrijednost X − Z, gdje X i Z odgovaraju oznakama iz teksta zadatka. 
+Pri ispisu rešenja, za svako slovo u pokušaju koje nije zeleno, provjeravamo je li xmz(slovo) > 0. 
+Ako jeste, ispisuje se ’R’ i smanjuje vrednost xmz(slovo) za 1, a u suprotnom ispisujemo ’B’. */
+
+E Neplagijatori na takmičenju iz programiranja
+/* 
+K = 2. Broj traženih parova razlicitih takmicara je broj svih parova, minus broj parova koji imaju jednak prvi zadatak, minus broj parova koji imaju jednak drugi zadatak, plus broj parova koji imaju jednaka oba zadatka (jer smo takve parove dvaput oduzeli).
+
+K = 3. Posle oduzimanja parova koji imaju isti prvi, pa drugi, pa treci zadatak, dodajemo parove koji imaju jednaka dva zadatka (prvi i drugi, pa prvi i treci, pa drugi i treci) jer smo ih dvaput oduzeli, 
+i na kraju ponovo oduzimamo parove koji imaju jednaka sva tri zadatka jer smo ih prethodno triput oduzeli i triput pribrojili.
+
+Za proizvoljno K, koristi se formula uključivanja: 
+oduzimaju se parovi koji se 1 od 4 podudaraju u podskupu s neparnim brojem zadataka, 
+a dodaju oni koji se podudaraju u podskupu s parnim brojem zadataka.
+Za svakog takmičara se naprave 2K "signatura", od kojih se svaka sastoji od njegovih poena za odredjeni podskup zadataka (npr. prvi, treci i cetvrti zadatak). 
+Za odredjeni podskup, odgovarajuce signature svih takmičara možemo sortirati i tako pronaci broj parova takmičara koji se u njima podudaraju, jer ce jednake signature biti uzastopne u sortiranom nizu. 
+Taj broj parova oduzimamo ili dodajemo konacnom rezultatu zavisno od parnosti podskupa, tj. parnosti broja zadataka u signaturi. */
+
+
