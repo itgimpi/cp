@@ -25,9 +25,7 @@ Prvi element u svakom sledećem redu je, po definiciji, element gore desno od nj
 
 Kako se dobijaju sledeći elementi? Npr. A(1,1):
 
-$
-A(1,1)=A(0,A(1,0))=A(0,2)=2
-$
+$A(1,1)=A(0,A(1,0))=A(0,2)=2$
 
 Dakle, $A(red,kolona)=A(red-1,A(red,kolona-1))$
 
