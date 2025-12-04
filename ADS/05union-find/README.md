@@ -137,7 +137,7 @@ Podskup nekog elementa se određuje prolaskom kroz roditelje, do korena. Deca po
 
 Unija se dobija usmeravanjem korena jednog skupa prema drugom.
 
-Први алгоритам одговара ситуацији у којој особа која промени адреду обавештава све друге особе о својој новој адреси. 
+Први алгоритам одговара ситуацији у којој особа која промени адресу обавештава све друге особе о својој новој адреси. 
 Други одговара ситуацији у којој само на старој адреси оставља информацију о својој новој адреси. 
 Ово, наравно, мало успорава доставу поште, јер се мора прећи кроз низ преусмеравања, 
 али ако тај низ није предугачак, може бити значајно ефикаснији од првог приступа.
@@ -413,7 +413,7 @@ int main() {
 return 0;    }
 ```
 
-# 5 union-find babe i dede
+# 5 union-find, babe i dede
 
 Umesto dva prolaza, može samo jedan...
 
@@ -466,7 +466,7 @@ Ovo rešenje se razlikuje od prvog sa roditeljima u samo jednom redu!
 
 Složenost je O(α(n)), α(n) je inverzna Akermanova f-ja, praktično O(1).
 
-За били који број n који је мањи од броја атома у целом универзуму важи да је α(n)<5, тако да је време практично константно.
+За било који број n који је мањи од броја атома у целом универзуму важи да је α(n)<5, тако да је време практично константно.
 
 ```cpp
 #include <bits/stdc++.h>
