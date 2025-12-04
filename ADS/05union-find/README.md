@@ -137,8 +137,10 @@ Podskup nekog elementa se određuje prolaskom kroz roditelje, do korena. Deca po
 
 Unija se dobija usmeravanjem korena jednog skupa prema drugom.
 
-Први алгоритам одговара ситуацији у којој особа која промени адресу обавештава све друге особе о својој новој адреси. 
-Други одговара ситуацији у којој само на старој адреси оставља информацију о својој новој адреси. 
+Prvi algoritam predstavlja osobu koja se seli i obaveštava ostale o novoj adresi.
+
+Drugi algoritam na staroj adresi ostavi informaciju o novoj.
+
 Ово, наравно, мало успорава доставу поште, јер се мора прећи кроз низ преусмеравања, 
 али ако тај низ није предугачак, може бити значајно ефикаснији од првог приступа.
 
